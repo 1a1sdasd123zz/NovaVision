@@ -1,0 +1,981 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DA20E93F-F9D4-4F7C-81F6-917A14ED4D18}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>NovaVision</RootNamespace>
+    <AssemblyName>NovaVision</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>12</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PreferNativeArm64>false</PreferNativeArm64>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>12</LangVersion>
+    <Prefer32Bit>true</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\软件.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>12</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>12</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AntdUI, Version=1.9.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\AntdUI.1.9.3\lib\net48\AntdUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Basler.Pylon">
+      <HintPath>..\..\工作\软件所需的dll\相机\basler\Basler.Pylon.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.VisionPro, Version=59.2.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <HintPath>C:\Program Files\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.CalibFix, Version=59.2.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <HintPath>C:\Program Files\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.CalibFix.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.CalibFix.Controls, Version=59.2.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <HintPath>C:\Program Files\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.CalibFix.Controls.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.Controls, Version=59.2.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <HintPath>C:\Program Files\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.Controls.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.Core, Version=59.2.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <HintPath>C:\Program Files\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.Core.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.CorePlus, Version=59.2.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <HintPath>C:\Program Files\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.CorePlus.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.Display.Controls, Version=59.2.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <HintPath>C:\Program Files\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.Display.Controls.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.ImageFile, Version=59.2.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <HintPath>C:\Program Files\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.ImageFile.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.ImageProcessing, Version=59.2.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <HintPath>C:\Program Files\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.ImageProcessing.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.Interop.Core, Version=59.2.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.Interop.Core.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.ToolGroup, Version=59.2.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <HintPath>C:\Program Files\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.ToolGroup.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.ToolGroup.Controls, Version=59.2.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <HintPath>C:\Program Files\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro.ToolGroup.Controls.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Cognex.VisionPro3D.Core, Version=59.2.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <HintPath>C:\Program Files\Cognex\VisionPro\ReferencedAssemblies\Cognex.VisionPro3D.Core.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DALSA.SaperaLT.SapClassBasic">
+      <HintPath>..\..\工作\软件所需的dll\生成\DALSA.SaperaLT.SapClassBasic.dll</HintPath>
+    </Reference>
+    <Reference Include="DLInferenceLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\视觉软件\DLInferenceLib\bin\Debug\DLInferenceLib.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="GoSdkNet">
+      <HintPath>..\..\工作\软件所需的dll\生成\GoSdkNet.dll</HintPath>
+    </Reference>
+    <Reference Include="halcondotnet, Version=23.11.0.0, Culture=neutral, PublicKeyToken=4973bed59ddbf2b8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\23994\AppData\Local\Programs\MVTec\HALCON-23.11-Progress\bin\dotnet35\halcondotnet.dll</HintPath>
+    </Reference>
+    <Reference Include="HslCommunication">
+      <HintPath>..\..\工作\软件所需的dll\生成\HslCommunication.dll</HintPath>
+    </Reference>
+    <Reference Include="IKapBoardClassLibrary">
+      <HintPath>..\..\工作\软件所需的dll\生成\IKapBoardClassLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="kApiNet">
+      <HintPath>..\..\工作\软件所需的dll\生成\kApiNet.dll</HintPath>
+    </Reference>
+    <Reference Include="KeyenceLib">
+      <HintPath>..\..\工作\软件所需的dll\生成\KeyenceLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Kitware.mummy.Runtime">
+      <HintPath>..\..\工作\软件所需的dll\生成\Kitware.mummy.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Kitware.VTK">
+      <HintPath>..\..\工作\软件所需的dll\生成\Kitware.VTK.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="MvCamCtrl.Net">
+      <HintPath>..\..\工作\软件所需的dll\生成\MvCamCtrl.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="MvFGCtrlC.Net, Version=1.0.0.0, Culture=neutral, PublicKeyToken=52fddfb3f94be800, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\工作\软件所需的dll\生成\MvFGCtrlC.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="MVFGSDK_Net, Version=1.3.0.9252, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\HuarayTech\MV Viewer\Development\DOTNET DLL\IMVFG\DOTNET_4.0\x64\MVFGSDK_Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NvtLvmSdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\工作\软件所需的dll\相机\LVM\NvtLvmSdk.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\工作\软件所需的dll\OpenCV\OpenCvSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\工作\软件所需的dll\生成\OpenCvSharp.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.119.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.119.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>packages\System.Data.SQLite.EF6.1.0.119.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.119.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>packages\System.Data.SQLite.Linq.1.0.119.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ThridLibray, Version=1.0.0.31445, Culture=neutral, PublicKeyToken=407bb547be8622a9, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\HuarayTech\MV Viewer\Development\DOTNET DLL\IMV\DOTNET_4.0\x64\ThridLibray.dll</HintPath>
+    </Reference>
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+    <Reference Include="WeifenLuo.WinFormsUI.Docking.ThemeVS2015, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <HintPath>packages\DockPanelSuite.ThemeVS2015.3.1.1\lib\net40\WeifenLuo.WinFormsUI.Docking.ThemeVS2015.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseClass\Algorithm\AlgorithmParameter.cs" />
+    <Compile Include="BaseClass\AppConfig.cs" />
+    <Compile Include="BaseClass\Authority\AuthorityData.cs" />
+    <Compile Include="BaseClass\Authority\AuthorityInfo.cs" />
+    <Compile Include="BaseClass\Authority\AuthorityName.cs" />
+    <Compile Include="BaseClass\Authority\UserInfo.cs" />
+    <Compile Include="BaseClass\Collection\ChangeEventArg.cs" />
+    <Compile Include="BaseClass\Collection\CollectionInsertEventArgs.cs" />
+    <Compile Include="BaseClass\Collection\CollectionMoveEventArgs.cs" />
+    <Compile Include="BaseClass\Collection\CollectionRemoveEventArgs.cs" />
+    <Compile Include="BaseClass\Collection\CollectionReplaceEventArgs.cs" />
+    <Compile Include="BaseClass\Collection\IChangedEvent.cs" />
+    <Compile Include="BaseClass\Collection\ICollectionEvents.cs" />
+    <Compile Include="BaseClass\Collection\MyCollectionBase.cs" />
+    <Compile Include="BaseClass\Collection\MyDictionaryEx.cs" />
+    <Compile Include="BaseClass\Communication\CommBaseInfo.cs" />
+    <Compile Include="BaseClass\Communication\CommCollection.cs" />
+    <Compile Include="BaseClass\Communication\CommConfigData.cs" />
+    <Compile Include="BaseClass\Communication\CommData\Comm_Element.cs" />
+    <Compile Include="BaseClass\Communication\CommData\Info.cs" />
+    <Compile Include="BaseClass\Communication\CommunicationBase.cs" />
+    <Compile Include="BaseClass\Communication\CommunicationOperator.cs" />
+    <Compile Include="BaseClass\Communication\DelEventCardArgs.cs" />
+    <Compile Include="BaseClass\Communication\IFlowState.cs" />
+    <Compile Include="BaseClass\Communication\ModbusTcp.cs" />
+    <Compile Include="BaseClass\Communication\TCP\AsyncUserToken.cs" />
+    <Compile Include="BaseClass\Communication\TCP\AsyncUserTokenPool.cs" />
+    <Compile Include="BaseClass\Communication\TCP\BTWTcpClient.cs" />
+    <Compile Include="BaseClass\Communication\TCP\ClientInfo.cs" />
+    <Compile Include="BaseClass\Communication\TCP\DataFormat.cs" />
+    <Compile Include="BaseClass\Communication\TCP\DynamicBufferManager.cs" />
+    <Compile Include="BaseClass\Communication\TCP\EndianEnum.cs" />
+    <Compile Include="BaseClass\Communication\TCP\FixedPrefixFrame.cs" />
+    <Compile Include="BaseClass\Communication\TCP\MyTcpServer.cs" />
+    <Compile Include="BaseClass\Communication\TCP\TcpBlockElement.cs" />
+    <Compile Include="BaseClass\Communication\TCP\TcpBlockElementsCollection.cs" />
+    <Compile Include="BaseClass\Communication\TCP\TcpEventArgs.cs" />
+    <Compile Include="BaseClass\Communication\TCP\TcpJobChangeRequestedEventArgs.cs" />
+    <Compile Include="BaseClass\Communication\TCP\TcpMode.cs" />
+    <Compile Include="BaseClass\CustomPropertyDescriptor.cs" />
+    <Compile Include="BaseClass\DataBase\DataBaseHelper.cs" />
+    <Compile Include="BaseClass\DataBase\DBDataType.cs" />
+    <Compile Include="BaseClass\DataBase\EnumDescriptionAttribute.cs" />
+    <Compile Include="BaseClass\DataBase\EnumHelper.cs" />
+    <Compile Include="BaseClass\DataBase\PageInfo.cs" />
+    <Compile Include="BaseClass\DataBase\SQLiteInfoBll.cs" />
+    <Compile Include="BaseClass\DataBase\SQLiteInfoDal.cs" />
+    <Compile Include="BaseClass\DataBase\SqlLiteInfoDal.cs" />
+    <Compile Include="BaseClass\DataBase\TableFieldInfo.cs" />
+    <Compile Include="BaseClass\DataCollection.cs" />
+    <Compile Include="BaseClass\DeepCopy.cs" />
+    <Compile Include="BaseClass\DropDownListConverter.cs" />
+    <Compile Include="BaseClass\EnumHelper\EnumAlgorithmType.cs" />
+    <Compile Include="BaseClass\EnumHelper\EnumHelper.cs" />
+    <Compile Include="BaseClass\EnumHelper\EnumDataGridOperation.cs" />
+    <Compile Include="BaseClass\EventArg_Rename.cs" />
+    <Compile Include="BaseClass\FileOperator.cs" />
+    <Compile Include="BaseClass\Helper\MemoryHelper.cs" />
+    <Compile Include="BaseClass\Helper\VisionPro_ImageSave.cs" />
+    <Compile Include="BaseClass\Helper\XmlDictionary.cs" />
+    <Compile Include="BaseClass\Helper\XmlHelper.cs" />
+    <Compile Include="BaseClass\Helper\XmlObject.cs" />
+    <Compile Include="BaseClass\ImageType.cs" />
+    <Compile Include="BaseClass\Info.cs" />
+    <Compile Include="BaseClass\KeyboardHook.cs" />
+    <Compile Include="BaseClass\Language.cs" />
+    <Compile Include="BaseClass\Light\LightInfo.cs" />
+    <Compile Include="BaseClass\LogUtil.cs" />
+    <Compile Include="BaseClass\Module\Algorithm\AlgInputParam.cs" />
+    <Compile Include="BaseClass\Module\Algorithm\AlgInputParams.cs" />
+    <Compile Include="BaseClass\Module\Algorithm\AlgInputsParamsCollection.cs" />
+    <Compile Include="BaseClass\Module\Algorithm\Info.cs" />
+    <Compile Include="BaseClass\Module\Algorithm\Terminal.cs" />
+    <Compile Include="BaseClass\Module\CalibInfo.cs" />
+    <Compile Include="BaseClass\Module\DataBinding.cs" />
+    <Compile Include="BaseClass\Module\DataBindingCollection.cs" />
+    <Compile Include="BaseClass\Module\DataSource.cs" />
+    <Compile Include="BaseClass\Module\ElementBase.cs" />
+    <Compile Include="BaseClass\Module\IElement.cs" />
+    <Compile Include="BaseClass\Module\InfoBase.cs" />
+    <Compile Include="BaseClass\Module\InputsOutputs.cs" />
+    <Compile Include="BaseClass\Module\ModuleData.cs" />
+    <Compile Include="BaseClass\Module\MyCollectionBase.cs" />
+    <Compile Include="BaseClass\MultiLanguage.cs" />
+    <Compile Include="BaseClass\MyTypeConvert.cs" />
+    <Compile Include="BaseClass\ObjToTreeView.cs" />
+    <Compile Include="BaseClass\ParameterMode.cs" />
+    <Compile Include="BaseClass\Property.cs" />
+    <Compile Include="BaseClass\PropertyGridProperty.cs" />
+    <Compile Include="BaseClass\RawImageInfo.cs" />
+    <Compile Include="BaseClass\SerialPortUtil.cs" />
+    <Compile Include="BaseClass\SocketHelper.cs" />
+    <Compile Include="BaseClass\EnumHelper\EnumStation.cs" />
+    <Compile Include="BaseClass\SystemInfo.cs" />
+    <Compile Include="BaseClass\ToolExport\ExportConfigDto.cs" />
+    <Compile Include="BaseClass\ToolImageInfo.cs" />
+    <Compile Include="BaseClass\VisionConfig\InspectionConfig.cs" />
+    <Compile Include="BaseClass\VisionConfig\InspectType.cs" />
+    <Compile Include="BaseClass\VisionConfig\JobChangeSignal.cs" />
+    <Compile Include="BaseClass\VisionConfig\JobCollection.cs" />
+    <Compile Include="BaseClass\VisionConfig\JobData.cs" />
+    <Compile Include="BaseClass\VisionConfig\JobInfo.cs" />
+    <Compile Include="BaseClass\VisionConfig\JobInfoCollection.cs" />
+    <Compile Include="BaseClass\VisionConfig\StationCollection.cs" />
+    <Compile Include="BaseClass\VisionConfig\StationConfig.cs" />
+    <Compile Include="BaseClass\VisionConfig\SystemConfigData.cs" />
+    <Compile Include="BaseClass\VisionConfig\UIControl.cs" />
+    <Compile Include="BaseClass\XmlHelp.cs" />
+    <Compile Include="ControllerDllCSharp\ClassLibControllerDll.cs" />
+    <Compile Include="Hardware\BaseInfo.cs" />
+    <Compile Include="Hardware\Bv_Camera.cs" />
+    <Compile Include="Hardware\Bv_HardwareError.cs" />
+    <Compile Include="Hardware\CamEnumSingleton.cs" />
+    <Compile Include="Hardware\Frame_Grabber_CameraLink_._04_IRAYPLE_CL\IRAYPLE_CL.cs" />
+    <Compile Include="Hardware\SDK_Cognex2DTool\Camera_Cognex2D.cs" />
+    <Compile Include="Hardware\_006_SDK_Keyence3DTool\Camera_Keyence3D.cs" />
+    <Compile Include="Hardware\_006_SDK_Keyence3DTool\KeyenceConfig.cs" />
+    <Compile Include="Hardware\_006_SDK_Keyence3DTool\LJX8IF_BATCH_POSITION.cs" />
+    <Compile Include="Hardware\_006_SDK_Keyence3DTool\LJX8IF_GET_BATCH_PROFILE_REQUEST.cs" />
+    <Compile Include="Hardware\_006_SDK_Keyence3DTool\LJX8IF_GET_BATCH_PROFILE_RESPONSE.cs" />
+    <Compile Include="Hardware\_006_SDK_Keyence3DTool\LJX8IF_GET_PROFILE_REQUEST.cs" />
+    <Compile Include="Hardware\_006_SDK_Keyence3DTool\LJX8IF_GET_PROFILE_RESPONSE.cs" />
+    <Compile Include="Hardware\_006_SDK_Keyence3DTool\LJX8IF_HIGH_SPEED_PRE_START_REQUEST.cs" />
+    <Compile Include="Hardware\_006_SDK_Keyence3DTool\LJX8IF_PROFILE_BANK.cs" />
+    <Compile Include="Hardware\_006_SDK_Keyence3DTool\LJX8IF_PROFILE_FOOTER.cs" />
+    <Compile Include="Hardware\_006_SDK_Keyence3DTool\LJX8IF_PROFILE_HEADER.cs" />
+    <Compile Include="Hardware\_006_SDK_Keyence3DTool\LJX8IF_PROFILE_INFO.cs" />
+    <Compile Include="Hardware\_006_SDK_Keyence3DTool\LJX8IF_PROFILE_POSITION.cs" />
+    <Compile Include="Hardware\_006_SDK_Keyence3DTool\LJX8IF_SETTING_DEPTH.cs" />
+    <Compile Include="Hardware\_006_SDK_Keyence3DTool\LJX8IF_TARGET_SETTING.cs" />
+    <Compile Include="Hardware\_006_SDK_Keyence3DTool\LJX8IF_VERSION_INFO.cs" />
+    <Compile Include="Hardware\_006_SDK_Keyence3DTool\NativeMethods.cs" />
+    <Compile Include="Hardware\_006_SDK_Keyence3DTool\Rc.cs" />
+    <Compile Include="Hardware\_006_SDK_Keyence3DTool\SettingType.cs" />
+    <Compile Include="Hardware\_006_SDK_Keyence3DTool\ThreadSafeBuffer.cs" />
+    <Compile Include="Hardware\_007_SDK_LMI3DTool\Camera_LMI3D.cs" />
+    <Compile Include="Hardware\_007_SDK_LMI3DTool\GoDataMessageTypes.cs" />
+    <Compile Include="Hardware\_007_SDK_LMI3DTool\GoOutputSource.cs" />
+    <Compile Include="Hardware\_007_SDK_LMI3DTool\GoPoints.cs" />
+    <Compile Include="Hardware\_007_SDK_LMI3DTool\SensorInformation.cs" />
+    <Compile Include="Hardware\_007_SDK_LMI3DTool\SensorOperation.cs" />
+    <Compile Include="Hardware\_007_SDK_LMI3DTool\SurfacePoints.cs" />
+    <Compile Include="Hardware\_011_SDK_SSZN3DTool\Camera_SSZN.cs" />
+    <Compile Include="Hardware\_011_SDK_SSZN3DTool\PinnedObject.cs" />
+    <Compile Include="Hardware\_011_SDK_SSZN3DTool\SR7IF_ETHERNET_CONFIG.cs" />
+    <Compile Include="Hardware\_011_SDK_SSZN3DTool\SR7IF_STR_CALLBACK_INFO.cs" />
+    <Compile Include="Hardware\_011_SDK_SSZN3DTool\SR7LinkFunc.cs" />
+    <Compile Include="Hardware\_011_SDK_SSZN3DTool\SSZNImageData.cs" />
+    <Compile Include="Hardware\Camera2DBase.cs" />
+    <Compile Include="Hardware\Camera2DCollection.cs" />
+    <Compile Include="Hardware\Camera2DLineCollection.cs" />
+    <Compile Include="Hardware\Camera2DLineWorkMode.cs" />
+    <Compile Include="Hardware\Camera3DBase.cs" />
+    <Compile Include="Hardware\Camera3DCollection.cs" />
+    <Compile Include="Hardware\CameraBase.cs" />
+    <Compile Include="Hardware\CameraCategory.cs" />
+    <Compile Include="Hardware\CameraConfigData.cs" />
+    <Compile Include="Hardware\CameraDeploy.cs" />
+    <Compile Include="Hardware\CameraDevice.cs" />
+    <Compile Include="Hardware\CameraLine2DBase.cs" />
+    <Compile Include="Hardware\CameraMessage.cs" />
+    <Compile Include="Hardware\CameraOperator.cs" />
+    <Compile Include="Hardware\CameraParamChangeArgs.cs" />
+    <Compile Include="Hardware\CamErrCode.cs" />
+    <Compile Include="Hardware\CamParams.cs" />
+    <Compile Include="Hardware\CamSettingParams.cs" />
+    <Compile Include="Hardware\CamWhiteBalance.cs" />
+    <Compile Include="Hardware\ComBaudRate.cs" />
+    <Compile Include="Hardware\CSVOperator.cs" />
+    <Compile Include="Hardware\C_2DGigeLineScan\Hikrobot\Bv_HikrobotGigeLineScan.cs" />
+    <Compile Include="Hardware\C_2DGigeLineScan\Hikrobot\Camera_HIKLineScanCamL.cs" />
+    <Compile Include="Hardware\C_2DGigeLineScan\Hikrobot\Camera_HIKLineScanGige.cs" />
+    <Compile Include="Hardware\C_2DGigeLineScan\Hikrobot\Camera_MVS_GigeLineScan.cs" />
+    <Compile Include="Hardware\C_2DGigeLineScan\iRAYPLE\Bv_DaHuaGigeLineScan.cs" />
+    <Compile Include="Hardware\C_2DGigeLineScan\iRAYPLE\DaHua_GigeLineScan.cs" />
+    <Compile Include="Hardware\C_2DGigeLineScan\SDK_IKapLineScanTool\BmpImage.cs" />
+    <Compile Include="Hardware\C_2DGigeLineScan\SDK_IKapLineScanTool\Camera_IKapLineScan.cs" />
+    <Compile Include="Hardware\C_2DGigeLineScan\SDK_IKapLineScanTool\SerialPortControl.cs" />
+    <Compile Include="Hardware\DalsaTool\Camera_Dalsa2D.cs" />
+    <Compile Include="Hardware\DalsaTool\TriggerModeEnum.cs" />
+    <Compile Include="Hardware\DataContext.cs" />
+    <Compile Include="Hardware\DelEventCamParameters.cs" />
+    <Compile Include="Hardware\FrameGrabberConfigData.cs" />
+    <Compile Include="Hardware\FrameGrabberOperator.cs" />
+    <Compile Include="Hardware\Frame_Grabber\CameraSerialPort.cs" />
+    <Compile Include="Hardware\Frame_Grabber_CameraLink_.CameraLinkCamera\Dalsa_CL.cs" />
+    <Compile Include="Hardware\Frame_Grabber_CameraLink_.CameraLinkCamera\Hikrobot_CL.cs" />
+    <Compile Include="Hardware\Frame_Grabber_CameraLink_._03_IKap\Bv_Vulcan.cs" />
+    <Compile Include="Hardware\Frame_Grabber_CameraLink_._03_IKap\IKapImageData.cs" />
+    <Compile Include="Hardware\Frame_Grabber_CameraLink_._03_IKap\ItekVulcan.cs" />
+    <Compile Include="Hardware\Frame_Grabber_CameraLink_._05_HIK_CL\HikCL.cs" />
+    <Compile Include="Hardware\Frame_Grabber_CameraLink_\AttributeExtend.cs" />
+    <Compile Include="Hardware\Frame_Grabber_CameraLink_\CLCameraFactory.cs" />
+    <Compile Include="Hardware\Frame_Grabber_CameraLink_\SettingAttribute.cs" />
+    <Compile Include="Hardware\HardwareDeployment.cs" />
+    <Compile Include="Hardware\HardwareErrorEventArgs.cs" />
+    <Compile Include="Hardware\IAcquisition2DLineScan3D.cs" />
+    <Compile Include="Hardware\ICam_Handle.cs" />
+    <Compile Include="Hardware\ImageData.cs" />
+    <Compile Include="Hardware\ImageInfo.cs" />
+    <Compile Include="Hardware\ParamElement.cs" />
+    <Compile Include="Hardware\PicFormat.cs" />
+    <Compile Include="Hardware\RangeImageFormatEnum.cs" />
+    <Compile Include="Hardware\SafeBufferExt.cs" />
+    <Compile Include="Hardware\SDK_BaslerTool\Camera_Basler.cs" />
+    <Compile Include="Hardware\SDK_HIKVision2DTool\Camera_HIKVision.cs" />
+    <Compile Include="Hardware\TriggerMode2D.cs" />
+    <Compile Include="Hardware\TriggerMode2DLinear.cs" />
+    <Compile Include="Hardware\TriggerMode3D.cs" />
+    <Compile Include="Hardware\VendorEnum.cs" />
+    <Compile Include="Hardware\_010_SDK_LVM3DTool\Camera_LVM3D.cs" />
+    <Compile Include="Hardware\_012_SDK_CognexDS3DTool\Camera_CognexDS3D.cs" />
+    <Compile Include="Hardware\_014_SDK_IRAPLE\Camera_IRAYPLE.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\ACQfifoTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\ACQfifoTool.Designer.cs">
+      <DependentUpon>ACQfifoTool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\FrmCamera2DSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\FrmCamera2DSetting.Designer.cs">
+      <DependentUpon>FrmCamera2DSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\FrmCamera3DSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\FrmCamera3DSetting.Designer.cs">
+      <DependentUpon>FrmCamera3DSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\FrmCameraDahuaCL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\FrmCameraDahuaCL.Designer.cs">
+      <DependentUpon>FrmCameraDahuaCL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\FrmCameraDahuaLinear2DSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\FrmCameraDahuaLinear2DSetting.Designer.cs">
+      <DependentUpon>FrmCameraDahuaLinear2DSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\FrmCameraDeploySetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\FrmCameraDeploySetting.Designer.cs">
+      <DependentUpon>FrmCameraDeploySetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\FrmCameraHikLinear2DSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\FrmCameraHikLinear2DSetting.Designer.cs">
+      <DependentUpon>FrmCameraHikLinear2DSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\FrmCameraLinear2DSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\FrmCameraLinear2DSetting.Designer.cs">
+      <DependentUpon>FrmCameraLinear2DSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\FrmHardwareDeployment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\FrmHardwareDeployment.Designer.cs">
+      <DependentUpon>FrmHardwareDeployment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\FrmIRAYPLEFrameGrabber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\FrmIRAYPLEFrameGrabber.Designer.cs">
+      <DependentUpon>FrmIRAYPLEFrameGrabber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\FrmHikFrameGrabber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\FrmHikFrameGrabber.Designer.cs">
+      <DependentUpon>FrmHikFrameGrabber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\FrmVulcanFrameGrabber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\FrmVulcanFrameGrabber.Designer.cs">
+      <DependentUpon>FrmVulcanFrameGrabber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\HighSpeedInitializeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\HighSpeedInitializeForm.Designer.cs">
+      <DependentUpon>HighSpeedInitializeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\MyListBoxItem.cs" />
+    <Compile Include="VisionForm\CarameFrm\OpenCameraConfig.cs" />
+    <Compile Include="VisionForm\CarameFrm\OpenEthernetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\OpenEthernetForm.Designer.cs">
+      <DependentUpon>OpenEthernetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\PreStartHighSpeedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\CarameFrm\PreStartHighSpeedForm.Designer.cs">
+      <DependentUpon>PreStartHighSpeedForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\CommunicationFrm\CommInOutConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\CommunicationFrm\CommInOutConfigForm.Designer.cs">
+      <DependentUpon>CommInOutConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\CommunicationFrm\ConfigNameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\CommunicationFrm\ConfigNameForm.Designer.cs">
+      <DependentUpon>ConfigNameForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\CommunicationFrm\Frm_Modbus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\CommunicationFrm\Frm_Modbus.Designer.cs">
+      <DependentUpon>Frm_Modbus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\CommunicationFrm\OpenCommConfig.cs" />
+    <Compile Include="VisionForm\CommunicationFrm\OperaterType.cs" />
+    <Compile Include="VisionForm\CommunicationFrm\TcpConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\CommunicationFrm\TcpConfigForm.Designer.cs">
+      <DependentUpon>TcpConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\CommunicationFrm\TcpTestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\CommunicationFrm\TcpTestForm.Designer.cs">
+      <DependentUpon>TcpTestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\CommunicationFrm\ValueEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\CommunicationFrm\ValueEditForm.Designer.cs">
+      <DependentUpon>ValueEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\MainForm\Frm_2D.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\MainForm\Frm_2D.Designer.cs">
+      <DependentUpon>Frm_2D.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\MainForm\Frm_3D.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\MainForm\Frm_3D.Designer.cs">
+      <DependentUpon>Frm_3D.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\MainForm\Frm_DisplaySet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\MainForm\Frm_DisplaySet.Designer.cs">
+      <DependentUpon>Frm_DisplaySet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\MainForm\Frm_Error.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\MainForm\Frm_Error.Designer.cs">
+      <DependentUpon>Frm_Error.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\MainForm\Frm_Log.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\MainForm\Frm_Log.Designer.cs">
+      <DependentUpon>Frm_Log.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\StationFrm\ConfigNameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\StationFrm\ConfigNameForm.Designer.cs">
+      <DependentUpon>ConfigNameForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\StationFrm\FrmModuleConfigDgv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\StationFrm\FrmModuleConfigDgv.Designer.cs">
+      <DependentUpon>FrmModuleConfigDgv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\StationFrm\Frm_CameraConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\StationFrm\Frm_CameraConfig.Designer.cs">
+      <DependentUpon>Frm_CameraConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\StationFrm\Frm_FileParam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\StationFrm\Frm_FileParam.Designer.cs">
+      <DependentUpon>Frm_FileParam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\StationFrm\Frm_JobConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\StationFrm\Frm_JobConfig.Designer.cs">
+      <DependentUpon>Frm_JobConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\StationFrm\Frm_ModuleConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\StationFrm\Frm_ModuleConfig.Designer.cs">
+      <DependentUpon>Frm_ModuleConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\StationFrm\Frm_ProcedurePlayBack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\StationFrm\Frm_ProcedurePlayBack.Designer.cs">
+      <DependentUpon>Frm_ProcedurePlayBack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\StationFrm\Frm_Station.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\StationFrm\Frm_Station.Designer.cs">
+      <DependentUpon>Frm_Station.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\StationFrm\InspectionProperty.cs" />
+    <Compile Include="VisionForm\StationFrm\PathEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\StationFrm\PathEditForm.Designer.cs">
+      <DependentUpon>PathEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\StationFrm\PlayBack.cs" />
+    <Compile Include="VisionForm\StationFrm\PlayBackList.cs" />
+    <Compile Include="VisionForm\StationFrm\ProductInfo.cs" />
+    <Compile Include="VisionForm\StationFrm\SpotCheckConfig.cs" />
+    <Compile Include="VisionForm\StationFrm\ValueShowForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\StationFrm\ValueShowForm.Designer.cs">
+      <DependentUpon>ValueShowForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkFlow\DnnSingleton.cs" />
+    <Compile Include="WorkFlow\ImageInfo.cs" />
+    <Compile Include="WorkFlow\ImageRecordInfo.cs" />
+    <Compile Include="WorkFlow\ImageSaveInfo.cs" />
+    <Compile Include="WorkFlow\MainWorkFlow.cs" />
+    <Compile Include="WorkFlow\TaskFlow.cs" />
+    <Compile Include="UserControlLibrary\CommCtrl\CommCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlLibrary\CommCtrl\CommCtrl.Designer.cs">
+      <DependentUpon>CommCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlLibrary\ConfigCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlLibrary\ConfigCtrl.Designer.cs">
+      <DependentUpon>ConfigCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlLibrary\ImageDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlLibrary\ImageDisplay.Designer.cs">
+      <DependentUpon>ImageDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlLibrary\ImageDisplayControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlLibrary\ImageDisplayControl.Designer.cs">
+      <DependentUpon>ImageDisplayControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlLibrary\MaxDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControlLibrary\MaxDisplay.Designer.cs">
+      <DependentUpon>MaxDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlLibrary\MyCheckBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlLibrary\MyCheckBox.Designer.cs">
+      <DependentUpon>MyCheckBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlLibrary\PathCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlLibrary\PathCtrl.Designer.cs">
+      <DependentUpon>PathCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlLibrary\TableLayoutPanelEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControlLibrary\TextBoxEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControlLibrary\TextBoxEx.Designer.cs">
+      <DependentUpon>TextBoxEx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\AlgorithmFrm\AlgConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\AlgorithmFrm\AlgConfigForm.Designer.cs">
+      <DependentUpon>AlgConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\AlgorithmFrm\CalibConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\AlgorithmFrm\CalibConfigForm.Designer.cs">
+      <DependentUpon>CalibConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\AlgorithmFrm\CalibProcessForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\AlgorithmFrm\CalibProcessForm.Designer.cs">
+      <DependentUpon>CalibProcessForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\AlgorithmFrm\CalibToolInfo.cs" />
+    <Compile Include="VisionForm\AlgorithmFrm\OperaterType.cs" />
+    <Compile Include="VisionForm\LightFrm\Frm_Light.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\LightFrm\Frm_Light.Designer.cs">
+      <DependentUpon>Frm_Light.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\LightFrm\Frm_Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\LightFrm\Frm_Test.Designer.cs">
+      <DependentUpon>Frm_Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\LoginFrm\Frm_Authority.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\LoginFrm\Frm_Authority.Designer.cs">
+      <DependentUpon>Frm_Authority.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\LoginFrm\Frm_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\LoginFrm\Frm_Login.Designer.cs">
+      <DependentUpon>Frm_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\LoginFrm\Frm_Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\LoginFrm\Frm_Register.Designer.cs">
+      <DependentUpon>Frm_Register.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\LoginFrm\Frm_UserManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\LoginFrm\Frm_UserManage.Designer.cs">
+      <DependentUpon>Frm_UserManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\LoginFrm\LoginControl.cs" />
+    <Compile Include="VisionForm\LoginFrm\UserInfo.cs" />
+    <Compile Include="VisionForm\MainForm\Frm_Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\MainForm\Frm_Main.Designer.cs">
+      <DependentUpon>Frm_Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisionForm\MainForm\Frm_Splash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionForm\MainForm\Frm_Splash.Designer.cs">
+      <DependentUpon>Frm_Splash.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlLibrary\CommCtrl\CommCtrl.resx">
+      <DependentUpon>CommCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlLibrary\ConfigCtrl.resx">
+      <DependentUpon>ConfigCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlLibrary\ImageDisplay.resx">
+      <DependentUpon>ImageDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlLibrary\ImageDisplayControl.resx">
+      <DependentUpon>ImageDisplayControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlLibrary\MaxDisplay.resx">
+      <DependentUpon>MaxDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionForm\AlgorithmFrm\AlgConfigForm.resx">
+      <DependentUpon>AlgConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionForm\AlgorithmFrm\CalibConfigForm.resx">
+      <DependentUpon>CalibConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionForm\AlgorithmFrm\CalibProcessForm.resx">
+      <DependentUpon>CalibProcessForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionForm\CarameFrm\FrmCamera2DSetting.resx">
+      <DependentUpon>FrmCamera2DSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionForm\CarameFrm\FrmCamera3DSetting.resx">
+      <DependentUpon>FrmCamera3DSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionForm\CarameFrm\FrmCameraDahuaCL.resx">
+      <DependentUpon>FrmCameraDahuaCL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionForm\CommunicationFrm\ValueEditForm.resx">
+      <DependentUpon>ValueEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionForm\LightFrm\Frm_Light.resx">
+      <DependentUpon>Frm_Light.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionForm\LightFrm\Frm_Test.resx">
+      <DependentUpon>Frm_Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionForm\LoginFrm\Frm_Authority.resx">
+      <DependentUpon>Frm_Authority.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionForm\LoginFrm\Frm_Login.resx">
+      <DependentUpon>Frm_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionForm\MainForm\Frm_2D.resx">
+      <DependentUpon>Frm_2D.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionForm\MainForm\Frm_DisplaySet.resx">
+      <DependentUpon>Frm_DisplaySet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionForm\MainForm\Frm_Error.resx">
+      <DependentUpon>Frm_Error.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionForm\MainForm\Frm_Log.resx">
+      <DependentUpon>Frm_Log.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionForm\MainForm\Frm_Main.resx">
+      <DependentUpon>Frm_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionForm\MainForm\Frm_Splash.resx">
+      <DependentUpon>Frm_Splash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionForm\StationFrm\ConfigNameForm.resx">
+      <DependentUpon>ConfigNameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionForm\StationFrm\FrmModuleConfigDgv.resx">
+      <DependentUpon>FrmModuleConfigDgv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionForm\StationFrm\Frm_CameraConfig.resx">
+      <DependentUpon>Frm_CameraConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionForm\StationFrm\Frm_FileParam.resx">
+      <DependentUpon>Frm_FileParam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionForm\StationFrm\Frm_JobConfig.resx">
+      <DependentUpon>Frm_JobConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionForm\StationFrm\Frm_ProcedurePlayBack.resx">
+      <DependentUpon>Frm_ProcedurePlayBack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionForm\StationFrm\Frm_Station.resx">
+      <DependentUpon>Frm_Station.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionForm\StationFrm\PathEditForm.resx">
+      <DependentUpon>PathEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\软件.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\错误栏.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\登录.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\系统配置.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\通讯.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\相机模块.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\算法模块.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\视图恢复.jpg" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
+  <Import Project="packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+</Project>
