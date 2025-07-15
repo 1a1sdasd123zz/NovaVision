@@ -60,7 +60,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <LangVersion>12</LangVersion>
-    <Prefer32Bit>true</Prefer32Bit>
+    <Prefer32Bit>false</Prefer32Bit>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
@@ -170,7 +170,7 @@
     </Reference>
     <Reference Include="halcondotnet, Version=23.11.0.0, Culture=neutral, PublicKeyToken=4973bed59ddbf2b8, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\23994\AppData\Local\Programs\MVTec\HALCON-23.11-Progress\bin\dotnet35\halcondotnet.dll</HintPath>
+      <HintPath>..\..\..\..\视觉软件\DLInferenceLib\bin\Debug\halcondotnet.dll</HintPath>
     </Reference>
     <Reference Include="HslCommunication">
       <HintPath>..\..\工作\软件所需的dll\生成\HslCommunication.dll</HintPath>

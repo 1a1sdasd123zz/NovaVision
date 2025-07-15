@@ -5,6 +5,7 @@ using CaptureCard_Net;
 using NovaVision.BaseClass;
 using System.Drawing.Imaging;
 using System.Drawing;
+using Basler.Pylon;
 
 namespace NovaVision.Hardware.Frame_Grabber_CameraLink_._04_IRAYPLE_CL;
 
@@ -14,8 +15,8 @@ namespace NovaVision.Hardware.Frame_Grabber_CameraLink_._04_IRAYPLE_CL;
 public class IRAYPLE_CL : Camera2DBase
 {
     public static readonly Dictionary<string, CardDev> Card_devices = new();
+    public static readonly Dictionary<string, uint> Card_devices_uIndex = new();
     private static readonly Dictionary<string, CamDev> Camera_devices = new();//只考虑一张卡挂载一个相机的情况
-    private static readonly Dictionary<string, string> Camera_Camera_Sn = new();//只考虑一张卡挂载一个相机的情况
     //public static Dictionary<string, uint> Card_devices_uIndex = new();
     private readonly CardDev card = new CardDev();
     readonly CamDev camera = new CamDev();
@@ -28,7 +29,7 @@ public class IRAYPLE_CL : Camera2DBase
     public IRAYPLE_CL(string sn)
     {
         SN = sn;
-        //card = Card_devices[SN];
+        card = Card_devices[SN];
         //camera = Camera_devices[SN];
     }
 
@@ -125,57 +126,17 @@ public class IRAYPLE_CL : Camera2DBase
                 LogUtil.Log("Open capture device.");
 
                 CardDev c = new();
-                res = c.IMV_FG_OpenInterface(i);
-                if (res != IMVFGDefine.IMV_FG_OK)
-                {
-                    LogUtil.LogError($"Open cameralink capture board device failed!errorCode:[{res}]");
-                    return;
-                }
+                //res = c.IMV_FG_OpenInterface(i);
+                //if (res != IMVFGDefine.IMV_FG_OK)
+                //{
+                //    LogUtil.LogError($"Open cameralink capture board device failed!errorCode:[{res}]");
+                //    return;
+                //}
 
                 if (!Card_devices.ContainsKey(interfaceinfo.serialNumber))
                 {
                     Card_devices.Add(interfaceinfo.serialNumber, c);
-                }
-
-                LogUtil.Log("Enum camera device.");
-                //IMVFGDefine.IMV_FG_EInterfaceType interfaceTp = IMVFGDefine.IMV_FG_EInterfaceType.typeCLInterface;
-                IMVFGDefine.IMV_FG_DEVICE_INFO_LIST camListPtr = new IMVFGDefine.IMV_FG_DEVICE_INFO_LIST();
-                //枚举相机设备
-                // discover camera 
-                
-                res = CamDev.IMV_FG_EnumDevices((uint)interfaceTp, ref camListPtr);
-                // 打开采集卡相机设备 
-                // Connect to CamDev 
-                if (camListPtr.nDevNum == 0)
-                {
-                    LogUtil.LogError($"No camera device find.errorCode:[{res}]");
-                    return;
-                }
-                for (int j = 0; j < camListPtr.nDevNum; j++)
-                {
-                    IMVFGDefine.IMV_FG_DEVICE_INFO devinfo = (IMVFGDefine.IMV_FG_DEVICE_INFO)Marshal.PtrToStructure(
-                        interfaceList.pInterfaceInfoList + (int)(Marshal.SizeOf(typeof(IMVFGDefine.IMV_FG_DEVICE_INFO)) * i),
-                        typeof(IMVFGDefine.IMV_FG_DEVICE_INFO));
-                    if (!Camera_devices.ContainsKey(devinfo.serialNumber))
-                    {
-                        CamDev cam = new CamDev();
-
-                        res = cam.IMV_FG_OpenDevice(IMVFGDefine.IMV_FG_ECreateHandleMode.IMV_FG_MODE_BY_INDEX, j);
-                        if (res == IMVFGDefine.IMV_FG_OK)
-                        {
-                            Camera_devices.Add(devinfo.serialNumber, cam);
-                            Camera_Camera_Sn.Add(interfaceinfo.serialNumber,devinfo.serialNumber);
-                            cam.IMV_FG_CloseDevice();
-                            c.IMV_FG_CloseInterface();
-                            break;
-                        }
-
-                        if (res != IMVFGDefine.IMV_FG_OK && j == camListPtr.nDevNum - 1)
-                        {
-                            //无法打开相机，说明该相机不在当前采集卡或者
-                            LogUtil.LogError($"Enumeration camera devices failed!errorCode:[{res}]");
-                        }
-                    }
+                    Card_devices_uIndex.Add(interfaceinfo.serialNumber, i);
                 }
             }
         }
@@ -191,18 +152,49 @@ public class IRAYPLE_CL : Camera2DBase
         int res;
         if (card.IMV_FG_IsOpenInterface())
             return 0;
-        res = card.IMV_FG_OpenInterfaceEx(IMVFGDefine.IMV_FG_ECreateHandleMode.IMV_FG_MODE_BY_CAMERAKEY,0,SN);
+        res = card.IMV_FG_OpenInterface(Card_devices_uIndex[SN]);
         if (res != IMVFGDefine.IMV_FG_OK)
         {
             LogUtil.LogError($"Open cameralink capture board device failed!errorCode:[{res}]");
             return -1;
         }
 
-        camera.IMV_FG_OpenDeviceEx(IMVFGDefine.IMV_FG_ECreateHandleMode.IMV_FG_MODE_BY_CAMERAKEY, 0, Camera_Camera_Sn[SN]);
-        if (res != IMVFGDefine.IMV_FG_OK)
+        LogUtil.Log("Enum camera device.");
+        // Discover capture board device
+        IMVFGDefine.IMV_FG_EInterfaceType interfaceTp = IMVFGDefine.IMV_FG_EInterfaceType.typeCLInterface;
+        IMVFGDefine.IMV_FG_DEVICE_INFO_LIST camListPtr = new IMVFGDefine.IMV_FG_DEVICE_INFO_LIST();
+        //枚举相机设备
+        // discover camera 
+
+        res = CamDev.IMV_FG_EnumDevices((uint)interfaceTp, ref camListPtr);
+        // 打开采集卡相机设备 
+        // Connect to CamDev 
+        if (camListPtr.nDevNum == 0)
         {
-            LogUtil.LogError($"Enumeration camera devices failed!errorCode:[{res}]");
+            LogUtil.LogError($"No camera device find.errorCode:[{res}]");
             return -1;
+        }
+        for (int j = 0; j < camListPtr.nDevNum; j++)
+        {
+            IMVFGDefine.IMV_FG_DEVICE_INFO devinfo = (IMVFGDefine.IMV_FG_DEVICE_INFO)Marshal.PtrToStructure(
+                camListPtr.pDeviceInfoList + (int)(Marshal.SizeOf(typeof(IMVFGDefine.IMV_FG_DEVICE_INFO)) * j),
+                typeof(IMVFGDefine.IMV_FG_DEVICE_INFO));
+            if (!Camera_devices.ContainsKey(devinfo.serialNumber))
+            {
+                res = camera.IMV_FG_OpenDevice(IMVFGDefine.IMV_FG_ECreateHandleMode.IMV_FG_MODE_BY_INDEX, j);
+                if (res == IMVFGDefine.IMV_FG_OK)
+                {
+                    Camera_devices.Add(SN, camera);
+                    break;
+                }
+
+                if (res != IMVFGDefine.IMV_FG_OK && j == camListPtr.nDevNum - 1)
+                {
+                    //无法打开相机，说明该相机不在当前采集卡或者
+                    LogUtil.LogError($"Enumeration camera devices failed!errorCode:[{res}]");
+                    return -1;
+                }
+            }
         }
         isConnected = true;
         camErrCode = CamErrCode.ConnectSuccess;

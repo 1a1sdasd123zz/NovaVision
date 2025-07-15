@@ -53,51 +53,50 @@ namespace NovaVision.VisionForm.AlgorithmFrm
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.configCtrl_Alg, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1340, 688);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1787, 917);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.cogToolBlockEditV21, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(304, 4);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(405, 5);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1032, 680);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1377, 907);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Controls.Add(this.txt_Name, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1028, 41);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1371, 54);
             this.tableLayoutPanel3.TabIndex = 5;
             // 
             // txt_Name
@@ -105,10 +104,9 @@ namespace NovaVision.VisionForm.AlgorithmFrm
             this.txt_Name.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.txt_Name.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txt_Name.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txt_Name.Location = new System.Drawing.Point(152, 2);
-            this.txt_Name.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_Name.Location = new System.Drawing.Point(203, 3);
             this.txt_Name.Name = "txt_Name";
-            this.txt_Name.Size = new System.Drawing.Size(874, 35);
+            this.txt_Name.Size = new System.Drawing.Size(1165, 35);
             this.txt_Name.TabIndex = 6;
             // 
             // label1
@@ -116,10 +114,10 @@ namespace NovaVision.VisionForm.AlgorithmFrm
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(4, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(5, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 41);
+            this.label1.Size = new System.Drawing.Size(190, 54);
             this.label1.TabIndex = 7;
             this.label1.Text = "输入算法名：";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -129,28 +127,28 @@ namespace NovaVision.VisionForm.AlgorithmFrm
             this.cogToolBlockEditV21.AllowDrop = true;
             this.cogToolBlockEditV21.ContextMenuCustomizer = null;
             this.cogToolBlockEditV21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cogToolBlockEditV21.Location = new System.Drawing.Point(4, 49);
-            this.cogToolBlockEditV21.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cogToolBlockEditV21.MinimumSize = new System.Drawing.Size(734, 0);
+            this.cogToolBlockEditV21.Location = new System.Drawing.Point(5, 65);
+            this.cogToolBlockEditV21.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.cogToolBlockEditV21.MinimumSize = new System.Drawing.Size(979, 0);
             this.cogToolBlockEditV21.Name = "cogToolBlockEditV21";
             this.cogToolBlockEditV21.ShowNodeToolTips = true;
-            this.cogToolBlockEditV21.Size = new System.Drawing.Size(1024, 627);
+            this.cogToolBlockEditV21.Size = new System.Drawing.Size(1367, 837);
             this.cogToolBlockEditV21.SuspendElectricRuns = false;
             this.cogToolBlockEditV21.TabIndex = 2;
             // 
             // configCtrl_Alg
             // 
-            this.configCtrl_Alg.ButtonHeight = 47;
-            this.configCtrl_Alg.ControlWidth = 288;
+            this.configCtrl_Alg.ButtonHeight = 60;
+            this.configCtrl_Alg.ControlWidth = 384;
             this.configCtrl_Alg.Dock = System.Windows.Forms.DockStyle.Fill;
             this.configCtrl_Alg.IsShownRecord = true;
-            this.configCtrl_Alg.ListBoxHeight = 548;
-            this.configCtrl_Alg.Location = new System.Drawing.Point(6, 6);
-            this.configCtrl_Alg.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.configCtrl_Alg.ListBoxHeight = 737;
+            this.configCtrl_Alg.Location = new System.Drawing.Point(8, 8);
+            this.configCtrl_Alg.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.configCtrl_Alg.Name = "configCtrl_Alg";
-            this.configCtrl_Alg.Size = new System.Drawing.Size(288, 676);
+            this.configCtrl_Alg.Size = new System.Drawing.Size(384, 901);
             this.configCtrl_Alg.TabIndex = 6;
-            this.configCtrl_Alg.ToolStripHeight = 62;
+            this.configCtrl_Alg.ToolStripHeight = 83;
             this.configCtrl_Alg.ToolStripWidth = 30;
             this.configCtrl_Alg.BtnRecordClick += new System.EventHandler(this.btn_Review_Click);
             this.configCtrl_Alg.BtnAddClick += new System.EventHandler(this.btn_Add_Click);
@@ -186,11 +184,11 @@ namespace NovaVision.VisionForm.AlgorithmFrm
             // 
             // AlgConfigForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1340, 688);
+            this.ClientSize = new System.Drawing.Size(1787, 917);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "AlgConfigForm";
             this.Text = "算法配置界面";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AlgConfigForm_FormClosing);
