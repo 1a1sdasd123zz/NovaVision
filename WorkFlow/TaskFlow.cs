@@ -343,6 +343,7 @@ public sealed class TaskFlow
 
     public void ManualRun(List<ICogImage> images)
     {
+        StartWorkFlow();
         Index = 0;
         FlyResults.Clear();
         for (int i = 0; i < images.Count; i++)
@@ -726,7 +727,7 @@ public sealed class TaskFlow
 
                     FlyResults.Clear();
                     sendData = sendData.TrimEnd(',') + end;
-                    mComm.SendData(sendData);
+                    //mComm.SendData(sendData);
                     Log("发送结果给客户端");
                     try
                     {

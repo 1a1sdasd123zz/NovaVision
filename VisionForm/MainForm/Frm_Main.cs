@@ -909,5 +909,19 @@ namespace NovaVision.VisionForm.MainForm
         {
 
         }
+
+        private void toolStripMenuItem1_Click_1(object sender, EventArgs e)
+        {
+            if (MainWorkFlow.iStart)
+            {
+                MainWorkFlow.iStart = false;
+                toolStripMenuItem1.Text = "开始";
+            }
+            else
+            {
+                MainWorkFlow.iStart = true;
+                toolStripMenuItem1.Text = "停止";
+            }
+        }
     }
 }

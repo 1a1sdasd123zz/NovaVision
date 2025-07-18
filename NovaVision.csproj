@@ -306,6 +306,7 @@
     <Compile Include="BaseClass\EnumHelper\EnumDataGridOperation.cs" />
     <Compile Include="BaseClass\EventArg_Rename.cs" />
     <Compile Include="BaseClass\FileOperator.cs" />
+    <Compile Include="BaseClass\Helper\ImageHelper.cs" />
     <Compile Include="BaseClass\Helper\MemoryHelper.cs" />
     <Compile Include="BaseClass\Helper\VisionPro_ImageSave.cs" />
     <Compile Include="BaseClass\Helper\XmlDictionary.cs" />

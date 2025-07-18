@@ -87,6 +87,7 @@ namespace NovaVision.VisionForm.MainForm
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dockPanel_Main = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.vS2015BlueTheme1 = new WeifenLuo.WinFormsUI.Docking.VS2015BlueTheme();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -103,7 +104,8 @@ namespace NovaVision.VisionForm.MainForm
             this.通讯模块ToolStripMenuItem,
             this.硬件模块ToolStripMenuItem,
             this.算法模块ToolStripMenuItem,
-            this.视图ToolStripMenuItem});
+            this.视图ToolStripMenuItem,
+            this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1717, 36);
@@ -373,7 +375,7 @@ namespace NovaVision.VisionForm.MainForm
             // 视图适应ToolStripMenuItem
             // 
             this.视图适应ToolStripMenuItem.Name = "视图适应ToolStripMenuItem";
-            this.视图适应ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.视图适应ToolStripMenuItem.Size = new System.Drawing.Size(182, 34);
             this.视图适应ToolStripMenuItem.Text = "视图适应";
             this.视图适应ToolStripMenuItem.Click += new System.EventHandler(this.视图适应ToolStripMenuItem_Click);
             // 
@@ -382,7 +384,7 @@ namespace NovaVision.VisionForm.MainForm
             this.tsmi_2D.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Window_2DChange});
             this.tsmi_2D.Name = "tsmi_2D";
-            this.tsmi_2D.Size = new System.Drawing.Size(270, 34);
+            this.tsmi_2D.Size = new System.Drawing.Size(182, 34);
             this.tsmi_2D.Text = "2D视图";
             this.tsmi_2D.Click += new System.EventHandler(this.tsmi_2D_Click);
             // 
@@ -398,7 +400,7 @@ namespace NovaVision.VisionForm.MainForm
             this.tsmi_3D.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Window_3DChange});
             this.tsmi_3D.Name = "tsmi_3D";
-            this.tsmi_3D.Size = new System.Drawing.Size(270, 34);
+            this.tsmi_3D.Size = new System.Drawing.Size(182, 34);
             this.tsmi_3D.Text = "3D视图";
             this.tsmi_3D.Click += new System.EventHandler(this.tsmi_3D_Click);
             // 
@@ -412,14 +414,14 @@ namespace NovaVision.VisionForm.MainForm
             // tsmi_Log
             // 
             this.tsmi_Log.Name = "tsmi_Log";
-            this.tsmi_Log.Size = new System.Drawing.Size(270, 34);
+            this.tsmi_Log.Size = new System.Drawing.Size(182, 34);
             this.tsmi_Log.Text = "日志栏";
             this.tsmi_Log.Click += new System.EventHandler(this.tsmi_Log_Click);
             // 
             // tsmi_Error
             // 
             this.tsmi_Error.Name = "tsmi_Error";
-            this.tsmi_Error.Size = new System.Drawing.Size(270, 34);
+            this.tsmi_Error.Size = new System.Drawing.Size(182, 34);
             this.tsmi_Error.Text = "错误栏";
             this.tsmi_Error.Click += new System.EventHandler(this.tsmi_Error_Click);
             // 
@@ -559,6 +561,13 @@ namespace NovaVision.VisionForm.MainForm
             this.dockPanel_Main.TabIndex = 0;
             this.dockPanel_Main.Theme = this.vS2015BlueTheme1;
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(98, 30);
+            this.toolStripMenuItem1.Text = "开始测试";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click_1);
+            // 
             // Frm_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 33F);
@@ -646,6 +655,7 @@ namespace NovaVision.VisionForm.MainForm
         private TableLayoutPanel tableLayoutPanel1;
         private DockPanel dockPanel_Main;
         private VS2015BlueTheme vS2015BlueTheme1;
+        private ToolStripMenuItem toolStripMenuItem1;
     }
 }
 

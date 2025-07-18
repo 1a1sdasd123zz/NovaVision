@@ -5,7 +5,6 @@ using CaptureCard_Net;
 using NovaVision.BaseClass;
 using System.Drawing.Imaging;
 using System.Drawing;
-using Basler.Pylon;
 
 namespace NovaVision.Hardware.Frame_Grabber_CameraLink_._04_IRAYPLE_CL;
 

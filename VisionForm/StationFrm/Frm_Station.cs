@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using NovaVision.BaseClass;
 using NovaVision.BaseClass.Collection;
@@ -14,10 +13,7 @@ using NovaVision.BaseClass.VisionConfig;
 using NovaVision.VisionForm.CarameFrm;
 using NovaVision.VisionForm.CommunicationFrm;
 using NovaVision.WorkFlow;
-using Cognex.VisionPro;
 using JobData = NovaVision.BaseClass.VisionConfig.JobData;
-using Cognex.VisionPro.Interop;
-using MvCamCtrl.NET;
 using CogImage8Grey = Cognex.VisionPro.CogImage8Grey;
 using ICogImage = Cognex.VisionPro.ICogImage;
 
@@ -26,7 +22,6 @@ namespace NovaVision.VisionForm.StationFrm
     public delegate void delNotifyMesState(object sender, bool state);
     public partial class Frm_Station : Form
     {
-
         //public event delNotifyMesState NotifyMesState;
 
         private MainWorkFlow mMainWorkFlow;
@@ -47,13 +42,6 @@ namespace NovaVision.VisionForm.StationFrm
         private string camConfigKey = "";
 
         private string mSelectStation = "";
-
-        // 支持的图片扩展名列表（不区分大小写）
-        private static readonly HashSet<string> SupportedExtensions = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
-        {
-            ".jpg", ".jpeg", ".png", ".bmp", ".gif", ".tiff", ".webp"
-        };
-
 
         public Frm_Station(JobData jobData, WorkFlow.MainWorkFlow taskFlow)
         {
@@ -723,7 +711,7 @@ namespace NovaVision.VisionForm.StationFrm
 
                         // 获取所有支持的图片文件
                         var imageFiles = Directory.GetFiles(selectedFolder, "*.*", SearchOption.TopDirectoryOnly)
-                            .Where(file => SupportedExtensions.Contains(Path.GetExtension(file)));
+                            .Where(file => ImageHelper.SupportedExtensions.Contains(Path.GetExtension(file)));
 
                         foreach (var file in imageFiles)
                         {
