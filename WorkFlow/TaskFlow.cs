@@ -314,7 +314,6 @@ public sealed class TaskFlow
                     Log($"设置为忽略，不执行该流程!");
                     return;
                 }
-                Index = 0;
                 switch (CameraType)
                 {
                     case "3D":
@@ -368,6 +367,7 @@ public sealed class TaskFlow
             mComm.Trigger += TaskFlow_Trigger;
         }
     }
+
     public void StopWorkFlow()
     {
         IsInspectFlowStart = false;
@@ -376,16 +376,15 @@ public sealed class TaskFlow
             mCamera.UpdateImage = null;
             //mCamera.Stop_Grab(state: false);
         }
-        if (mComm != null)
-        {
-            mComm.Trigger -= TaskFlow_Trigger;
-        }
+
+        mComm.Trigger -= TaskFlow_Trigger;
     }
 
     public int Carema2D_Run()
     {
         try
         {
+            Index = 0;
             CameraOperator.camera2DCollection[CameraSerialNum].UpdateImage = delegate(ImageData imageData)
             {
                 Index++;
@@ -727,7 +726,8 @@ public sealed class TaskFlow
 
                     FlyResults.Clear();
                     sendData = sendData.TrimEnd(',') + end;
-                    //mComm.SendData(sendData);
+                    mComm.SendData(sendData);
+                    Index = 0;
                     Log("发送结果给客户端");
                     try
                     {
